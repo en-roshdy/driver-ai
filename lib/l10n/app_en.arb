@@ -1,0 +1,12 @@
+{
+  "app_name": "Final Driver",
+  "login": "Log in",
+  "phone": "Mobile Number",
+  "type_phone": "Enter mobile number",
+  "verification_code": "Verification Code",
+  "send": "Send",
+  "home": "Home",
+  "orders": "My Orders",
+  "account": "My Account",
+  "logout": "Log out"
+}

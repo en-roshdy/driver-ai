@@ -1,0 +1,23 @@
+{
+  "app_name": "Final Driver",
+  "login": "تسجيل الدخول",
+  "phone": "رقم الجوال",
+  "type_phone": "أكتب رقم الجوال",
+  "verification_code": "رمز التفعيل",
+  "send": "إرسال",
+  "home": "الرئيسية",
+  "orders": "طلباتي",
+  "account": "حسابي",
+  "logout": "تسجيل الخروج",
+  "welcome_to_final": "نورتنا في فاينال 🥳",
+  "arabic": "عربي",
+  "english": "English",
+  "order_details": "تفاصيل الطلب",
+  "my_orders": "طلباتي",
+  "notifications": "الاشعارات",
+  "chats": "المحادثات",
+  "profile": "الملف الشخصي",
+  "my_wallet": "محفظتي",
+  "help": "المساعدة",
+  "who_are_we": "من نحن"
+}
