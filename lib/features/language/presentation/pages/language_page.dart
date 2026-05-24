@@ -31,8 +31,8 @@ class _LanguagePageState extends State<LanguagePage> {
           padding: const EdgeInsets.symmetric(horizontal: AppPadding.p24),
           child: Column(
             children: [
-              const Spacer(),
-              // Language Illustration
+
+              const SizedBox(height: AppSize.s60),
               SvgPicture.asset(
                 AppAssets.languageImg,
                 height: AppSize.s231,
@@ -43,7 +43,7 @@ class _LanguagePageState extends State<LanguagePage> {
                   color: AppColors.primary,
                 ),
               ),
-              const SizedBox(height: AppSize.s40),
+              // const SizedBox(height: AppSize.s40),
               
               // Title
               Text(
@@ -59,7 +59,7 @@ class _LanguagePageState extends State<LanguagePage> {
                 style: AppTextStyles.greyRegular16,
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: AppSize.s40),
+              const SizedBox(height: AppSize.s32),
               
               // Language Options
               CustomSelectionCard(
@@ -83,8 +83,8 @@ class _LanguagePageState extends State<LanguagePage> {
                 isSelected: _selectedLanguage == 'ar',
                 onTap: () => setState(() => _selectedLanguage = 'ar'),
               ),
-              
-              const Spacer(),
+
+              const SizedBox(height: AppSize.s16),
               
               // Selection Button
               CustomButton(
