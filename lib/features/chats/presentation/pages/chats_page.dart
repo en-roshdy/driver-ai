@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../core/theme/app_values.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../bloc/chat_bloc.dart';
 import '../bloc/chat_event.dart';
 import '../bloc/chat_state.dart';
@@ -21,8 +24,10 @@ class _ChatsPageState extends State<ChatsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Chats')),
+      appBar: AppBar(title: Text(l10n.chats)),
       body: BlocBuilder<ChatBloc, ChatState>(
         builder: (context, state) {
           if (state is ChatLoading) {
@@ -41,11 +46,11 @@ class _ChatsPageState extends State<ChatsPage> {
                   subtitle: Text(chat.lastMessageText),
                   trailing: chat.unreadCount > 0
                       ? CircleAvatar(
-                          radius: 10,
+                          radius: AppSize.s10,
                           backgroundColor: Theme.of(context).primaryColor,
                           child: Text(
                             chat.unreadCount.toString(),
-                            style: const TextStyle(fontSize: 10, color: Colors.white),
+                            style: const TextStyle(fontSize: AppSize.s10, color: AppColors.white),
                           ),
                         )
                       : Text(chat.lastMessageDate),

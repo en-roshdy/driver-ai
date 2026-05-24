@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../theme/app_theme.dart';
+import '../theme/app_values.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -21,9 +23,9 @@ class CustomButton extends StatelessWidget {
       style: color != null ? ElevatedButton.styleFrom(backgroundColor: color) : null,
       child: isLoading
           ? const SizedBox(
-              height: 20,
-              width: 20,
-              child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
+              height: AppSize.s20,
+              width: AppSize.s20,
+              child: CircularProgressIndicator(color: AppColors.white, strokeWidth: AppSize.s2),
             )
           : Text(text),
     );

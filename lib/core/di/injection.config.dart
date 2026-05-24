@@ -12,14 +12,14 @@
 import 'package:dio/dio.dart' as _i361;
 import 'package:final_delivery_ai/core/network/auth_interceptor.dart' as _i565;
 import 'package:final_delivery_ai/core/network/dio_client.dart' as _i1061;
+import 'package:final_delivery_ai/core/repositories/common_repository.dart'
+    as _i1011;
+import 'package:final_delivery_ai/core/repositories/common_repository_impl.dart'
+    as _i867;
 import 'package:final_delivery_ai/core/services/local_storage_service.dart'
     as _i902;
 import 'package:final_delivery_ai/core/services/location_service.dart' as _i274;
 import 'package:final_delivery_ai/core/services/socket_service.dart' as _i323;
-import 'package:final_delivery_ai/core/repositories/common_repository.dart'
-    as _i800;
-import 'package:final_delivery_ai/core/repositories/common_repository_impl.dart'
-    as _i801;
 import 'package:final_delivery_ai/features/authentication/data/datasources/auth_remote_data_source.dart'
     as _i930;
 import 'package:final_delivery_ai/features/authentication/data/repositories/auth_repository_impl.dart'
@@ -35,7 +35,7 @@ import 'package:final_delivery_ai/features/chats/data/repositories/chat_reposito
 import 'package:final_delivery_ai/features/chats/domain/repositories/chat_repository.dart'
     as _i536;
 import 'package:final_delivery_ai/features/chats/presentation/bloc/chat_bloc.dart'
-    as _i677;
+    as _i676;
 import 'package:final_delivery_ai/features/home/data/datasources/home_remote_data_source.dart'
     as _i137;
 import 'package:final_delivery_ai/features/home/data/repositories/home_repository_impl.dart'
@@ -82,6 +82,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i442.ChatRemoteDataSource>(
       () => _i442.ChatRemoteDataSourceImpl(gh<_i361.Dio>()),
     );
+    gh.lazySingleton<_i1011.CommonRepository>(
+      () => _i867.CommonRepositoryImpl(gh<_i361.Dio>()),
+    );
     gh.lazySingleton<_i930.AuthRemoteDataSource>(
       () => _i930.AuthRemoteDataSourceImpl(gh<_i361.Dio>()),
     );
@@ -94,18 +97,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i565.AuthInterceptor>(
       () => _i565.AuthInterceptor(gh<_i902.LocalStorageService>()),
     );
-    gh.lazySingleton<_i872.AuthRepository>(
-      () => _i353.AuthRepositoryImpl(
-        gh<_i930.AuthRemoteDataSource>(),
-        gh<_i902.LocalStorageService>(),
-      ),
-    );
-    gh.factory<_i242.AuthBloc>(
-      () => _i242.AuthBloc(gh<_i872.AuthRepository>()),
-    );
-    gh.lazySingleton<_i800.CommonRepository>(
-      () => _i801.CommonRepositoryImpl(gh<_i361.Dio>()),
-    );
     gh.lazySingleton<_i1066.OrderRepository>(
       () => _i1050.OrderRepositoryImpl(gh<_i743.OrderRemoteDataSource>()),
     );
@@ -115,11 +106,20 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i993.HomeBloc>(
       () => _i993.HomeBloc(gh<_i950.HomeRepository>()),
     );
-    gh.factory<_i677.ChatBloc>(
-      () => _i677.ChatBloc(gh<_i536.ChatRepository>()),
+    gh.lazySingleton<_i872.AuthRepository>(
+      () => _i353.AuthRepositoryImpl(
+        gh<_i930.AuthRemoteDataSource>(),
+        gh<_i902.LocalStorageService>(),
+      ),
+    );
+    gh.factory<_i676.ChatBloc>(
+      () => _i676.ChatBloc(gh<_i536.ChatRepository>()),
     );
     gh.factory<_i381.OrderBloc>(
       () => _i381.OrderBloc(gh<_i1066.OrderRepository>()),
+    );
+    gh.factory<_i242.AuthBloc>(
+      () => _i242.AuthBloc(gh<_i872.AuthRepository>()),
     );
     return this;
   }

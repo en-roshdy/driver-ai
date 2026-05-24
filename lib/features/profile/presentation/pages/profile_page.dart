@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/di/injection.dart';
+
 import '../../../../core/navigation/app_router.dart';
 import '../../../../core/services/local_storage_service.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../core/theme/app_values.dart';
+import '../../../../core/theme/app_text_styles.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -11,63 +16,64 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = getIt<LocalStorageService>().getUser();
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Profile')),
+      appBar: AppBar(title: Text(l10n.profile)),
       body: ListView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(AppPadding.p16),
         children: [
           const Center(
             child: CircleAvatar(
-              radius: 50,
-              child: Icon(Icons.person, size: 50),
+              radius: AppSize.s50,
+              child: Icon(Icons.person, size: AppSize.s50),
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: AppSize.s20),
           if (user != null) ...[
             Center(
               child: Text(
                 user.name,
-                style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: AppTextStyles.bold22,
               ),
             ),
             Center(
               child: Text(
                 user.phone,
-                style: const TextStyle(fontSize: 16, color: Colors.grey),
+                style: AppTextStyles.greyRegular16,
               ),
             ),
           ],
-          const SizedBox(height: 30),
+          const SizedBox(height: AppSize.s30),
           const Divider(),
           ListTile(
             leading: const Icon(Icons.wallet_outlined),
-            title: const Text('My Wallet'),
-            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            title: Text(l10n.my_wallet),
+            trailing: const Icon(Icons.arrow_forward_ios, size: AppSize.s16),
             onTap: () {},
           ),
           ListTile(
             leading: const Icon(Icons.notifications_outlined),
-            title: const Text('Notifications'),
-            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            title: Text(l10n.notifications),
+            trailing: const Icon(Icons.arrow_forward_ios, size: AppSize.s16),
             onTap: () {},
           ),
           ListTile(
             leading: const Icon(Icons.language_outlined),
-            title: const Text('Language'),
-            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            title: Text(l10n.language),
+            trailing: const Icon(Icons.arrow_forward_ios, size: AppSize.s16),
             onTap: () {},
           ),
           ListTile(
             leading: const Icon(Icons.help_outline),
-            title: const Text('Help'),
-            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            title: Text(l10n.help),
+            trailing: const Icon(Icons.arrow_forward_ios, size: AppSize.s16),
             onTap: () {},
           ),
           const Divider(),
           ListTile(
-            leading: const Icon(Icons.logout, color: Colors.red),
-            title: const Text('Logout', style: TextStyle(color: Colors.red)),
+            leading: const Icon(Icons.logout, color: AppColors.red),
+            title: Text(l10n.logout, style: const TextStyle(color: AppColors.red)),
             onTap: () {
               // Handle logout logic
               context.go(AppRouter.login);

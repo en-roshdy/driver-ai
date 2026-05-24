@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import '../../../../core/di/injection.dart';
+import '../../../../core/theme/app_values.dart';
+import '../../../../core/theme/app_text_styles.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../bloc/order_bloc.dart';
 import '../bloc/order_event.dart';
 import '../bloc/order_state.dart';
@@ -22,8 +26,10 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Order Details')),
+      appBar: AppBar(title: Text(l10n.order_details)),
       body: BlocBuilder<OrderBloc, OrderState>(
         builder: (context, state) {
           if (state is OrderLoading) {
@@ -32,13 +38,13 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
             final details = state.orderDetails;
             final order = details.order;
             return ListView(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(AppPadding.p16),
               children: [
                 if (order.lat != null && order.lng != null)
                   SizedBox(
-                    height: 200,
+                    height: AppSize.s200,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(AppRadius.r12),
                       child: GoogleMap(
                         initialCameraPosition: CameraPosition(
                           target: LatLng(order.lat!, order.lng!),
@@ -53,43 +59,43 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                       ),
                     ),
                   ),
-                const SizedBox(height: 16),
+                const SizedBox(height: AppSize.s16),
                 Card(
                   child: Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(AppPadding.p16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Order Number: ${order.orderNumber}',
-                            style: const TextStyle(fontWeight: FontWeight.bold)),
-                        Text('Status: ${order.statusCustomName}'),
-                        Text('Total: ${order.totalFullSentence}'),
-                        Text('Address: ${order.mapAddress ?? 'N/A'}'),
+                        Text('${l10n.order_number}: ${order.orderNumber}',
+                            style: AppTextStyles.bold16),
+                        Text('${l10n.status}: ${order.statusCustomName}'),
+                        Text('${l10n.total}: ${order.totalFullSentence}'),
+                        Text('${l10n.address}: ${order.mapAddress ?? 'N/A'}'),
                       ],
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
-                const Text('Items', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                const SizedBox(height: AppSize.s20),
+                Text(l10n.items, style: AppTextStyles.bold18),
                 ...details.items.map((item) => ListTile(
                       title: Text(item.name),
-                      subtitle: Text('Quantity: ${item.quantity}'),
+                      subtitle: Text('${l10n.quantity}: ${item.quantity}'),
                       trailing: Text('${item.price}'),
                     )),
-                const SizedBox(height: 20),
+                const SizedBox(height: AppSize.s20),
                 if (order.canAccept)
                   ElevatedButton(
                     onPressed: () {
                       context.read<OrderBloc>().add(AcceptOrderEvent(order.id));
                     },
-                    child: const Text('Accept Order'),
+                    child: Text(l10n.accept_order),
                   ),
                 if (order.canConfirm)
                   ElevatedButton(
                     onPressed: () {
                       context.read<OrderBloc>().add(ConfirmOrderEvent(order.id));
                     },
-                    child: const Text('Confirm Delivery'),
+                    child: Text(l10n.confirm_delivery),
                   ),
               ],
             );

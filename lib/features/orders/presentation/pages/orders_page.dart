@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/di/injection.dart';
 import '../../../../core/widgets/error_view.dart';
 import '../../../../core/widgets/loading_widget.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../bloc/order_bloc.dart';
 import '../bloc/order_event.dart';
 import '../bloc/order_state.dart';
@@ -27,15 +29,17 @@ class _OrdersPageState extends State<OrdersPage> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: const Text('My Orders')),
+      appBar: AppBar(title: Text(l10n.orders)),
       body: BlocBuilder<OrderBloc, OrderState>(
         builder: (context, state) {
           if (state is OrderLoading) {
             return const LoadingWidget();
           } else if (state is OrderLoaded) {
             if (state.orders.isEmpty) {
-              return const Center(child: Text('No orders found'));
+              return Center(child: Text(l10n.no_pending_orders));
             }
             return RefreshIndicator(
               onRefresh: () async => _loadOrders(),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../core/constants/app_assets.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../core/theme/app_values.dart';
 import '../../../../core/di/injection.dart';
 import '../../../../core/navigation/app_router.dart';
 import '../../../../core/services/local_storage_service.dart';
@@ -27,59 +30,54 @@ class _SplashPageState extends State<SplashPage> {
     if (token != null) {
       context.go(AppRouter.main);
     } else {
-      context.go(AppRouter.login);
+      context.go(AppRouter.language);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.neutralWhite,
       body: Stack(
         children: [
-          // Background Vector
+          // Background Vector (Topographic pattern)
           Positioned.fill(
             child: SvgPicture.asset(
-              'assets/icons/splash_bg.svg',
+              AppAssets.splashBg,
               fit: BoxFit.cover,
-              colorFilter: ColorFilter.mode(
-                const Color(0xFFBE8D5A).withOpacity(0.05),
-                BlendMode.srcIn,
-              ),
+              height: double.infinity,
+              width: double.infinity,
+
+              // colorFilter: ColorFilter.mode(
+              //   AppColors.neutral100.withOpacity(0.5),
+              //   BlendMode.srcIn,
+              // ),
             ),
           ),
           
           // Center Logo
           Center(
             child: Image.asset(
-              'assets/images/splash_logo.png',
-              width: 200,
-              errorBuilder: (context, error, stackTrace) => const FlutterLogo(size: 100),
+              AppAssets.splashLogo,
+              width: 112, // Adjusted based on visual proportion
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) => const Icon(
+                Icons.flutter_dash,
+                size: 100,
+                color: AppColors.primary,
+              ),
             ),
           ),
 
-          // Bottom Content
+          // Bottom Content (Vision 2030)
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 40.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SvgPicture.asset(
-                    'assets/icons/vision_2030.svg',
-                    width: 150,
-                    errorBuilder: (context, error, stackTrace) => const SizedBox(),
-                  ),
-                  const SizedBox(height: 16),
-                  const Text(
-                    'v 1.0.4',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFFBE8D5A),
-                    ),
-                  ),
-                ],
+              padding: const EdgeInsets.only(bottom: AppPadding.p24),
+              child: SvgPicture.asset(
+                AppAssets.vision2030,
+                width: 134, // Adjusted based on visual proportion
+                errorBuilder: (context, error, stackTrace) => const SizedBox(),
               ),
             ),
           ),

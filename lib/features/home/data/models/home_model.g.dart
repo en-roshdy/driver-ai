@@ -31,10 +31,10 @@ _$StatisticModelImpl _$$StatisticModelImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$StatisticModelImplToJson(
-        _$StatisticModelImpl instance) =>
-    <String, dynamic>{
-      'image': instance.image,
-      'name': instance.name,
-      'number': instance.value,
-      'is_double': instance.isDouble,
-    };
+  _$StatisticModelImpl instance,
+) => <String, dynamic>{
+  'image': instance.image,
+  'name': instance.name,
+  'number': instance.value,
+  'is_double': instance.isDouble,
+};

@@ -1,12 +1,14 @@
 import 'package:go_router/go_router.dart';
 import '../../features/authentication/presentation/pages/login_page.dart';
 import '../../features/splash/presentation/pages/splash_page.dart';
+import '../../features/language/presentation/pages/language_page.dart';
 import '../../features/main/presentation/pages/main_page.dart';
 import '../../features/orders/presentation/pages/order_details_page.dart';
 import '../../features/chats/presentation/pages/chat_details_page.dart';
 
 class AppRouter {
   static const splash = '/';
+  static const language = '/language';
   static const login = '/login';
   static const main = '/main';
   static const orderDetails = '/order-details/:id';
@@ -18,6 +20,10 @@ class AppRouter {
       GoRoute(
         path: splash,
         builder: (context, state) => const SplashPage(),
+      ),
+      GoRoute(
+        path: language,
+        builder: (context, state) => const LanguagePage(),
       ),
       GoRoute(
         path: login,
