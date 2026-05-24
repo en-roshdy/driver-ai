@@ -15,10 +15,23 @@ class AppLocalizationsAr extends AppLocalizations {
   String get login => 'تسجيل الدخول';
 
   @override
+  String get login_subtitle =>
+      'برجاء إدخال رقم الجوال، ليتم إرسال رمز التفعيل في رسالة نصية';
+
+  @override
   String get phone => 'رقم الجوال';
 
   @override
   String get type_phone => 'أكتب رقم الجوال';
+
+  @override
+  String get verify_via => 'التحقق عبر';
+
+  @override
+  String get sms => 'الرسائل النصية';
+
+  @override
+  String get whatsapp => 'واتس آب';
 
   @override
   String get verification_code => 'رمز التفعيل';

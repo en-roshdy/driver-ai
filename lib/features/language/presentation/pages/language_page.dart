@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_assets.dart';
@@ -9,6 +10,7 @@ import '../../../../core/navigation/app_router.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_selection_card.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../bloc/language_bloc.dart';
 
 class LanguagePage extends StatefulWidget {
   const LanguagePage({super.key});
@@ -31,8 +33,7 @@ class _LanguagePageState extends State<LanguagePage> {
           padding: const EdgeInsets.symmetric(horizontal: AppPadding.p24),
           child: Column(
             children: [
-
-              const SizedBox(height: AppSize.s60),
+              const SizedBox(height: AppSize.s40),
               SvgPicture.asset(
                 AppAssets.languageImg,
                 height: AppSize.s231,
@@ -43,7 +44,7 @@ class _LanguagePageState extends State<LanguagePage> {
                   color: AppColors.primary,
                 ),
               ),
-              // const SizedBox(height: AppSize.s40),
+              const Spacer(),
               
               // Title
               Text(
@@ -54,10 +55,13 @@ class _LanguagePageState extends State<LanguagePage> {
               const SizedBox(height: AppSize.s12),
               
               // Subtitle
-              Text(
-                l10n.please_select_language,
-                style: AppTextStyles.greyRegular16,
-                textAlign: TextAlign.center,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppPadding.p12),
+                child: Text(
+                  l10n.please_select_language,
+                  style: AppTextStyles.greyRegular16,
+                  textAlign: TextAlign.center,
+                ),
               ),
               const SizedBox(height: AppSize.s32),
               
@@ -84,17 +88,19 @@ class _LanguagePageState extends State<LanguagePage> {
                 onTap: () => setState(() => _selectedLanguage = 'ar'),
               ),
 
-              const SizedBox(height: AppSize.s16),
+              const Spacer(),
               
               // Selection Button
               CustomButton(
                 text: l10n.choose_language,
                 onPressed: () {
-                  // Save language preference and navigate
+                  context.read<LanguageBloc>().add(
+                        ChangeLanguage(Locale(_selectedLanguage)),
+                      );
                   context.go(AppRouter.login);
                 },
               ),
-              const SizedBox(height: AppSize.s24),
+              const SizedBox(height: AppSize.s40),
             ],
           ),
         ),

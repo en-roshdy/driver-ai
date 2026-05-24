@@ -110,6 +110,12 @@ abstract class AppLocalizations {
   /// **'Log in'**
   String get login;
 
+  /// No description provided for @login_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your mobile number to receive the verification code via text message'**
+  String get login_subtitle;
+
   /// No description provided for @phone.
   ///
   /// In en, this message translates to:
@@ -121,6 +127,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Enter mobile number'**
   String get type_phone;
+
+  /// No description provided for @verify_via.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify via'**
+  String get verify_via;
+
+  /// No description provided for @sms.
+  ///
+  /// In en, this message translates to:
+  /// **'SMS'**
+  String get sms;
+
+  /// No description provided for @whatsapp.
+  ///
+  /// In en, this message translates to:
+  /// **'WhatsApp'**
+  String get whatsapp;
 
   /// No description provided for @verification_code.
   ///

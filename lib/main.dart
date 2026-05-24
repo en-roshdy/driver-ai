@@ -5,6 +5,7 @@ import 'features/authentication/presentation/bloc/auth_bloc.dart';
 import 'features/home/presentation/bloc/home_bloc.dart';
 import 'features/orders/presentation/bloc/order_bloc.dart';
 import 'features/chats/presentation/bloc/chat_bloc.dart';
+import 'features/language/presentation/bloc/language_bloc.dart';
 import 'app.dart';
 
 void main() async {
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => getIt<HomeBloc>()),
         BlocProvider(create: (_) => getIt<OrderBloc>()),
         BlocProvider(create: (_) => getIt<ChatBloc>()),
+        BlocProvider(create: (_) => getIt<LanguageBloc>()),
       ],
       child: const FinalDeliveryApp(),
     );

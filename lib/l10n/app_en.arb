@@ -1,8 +1,12 @@
 {
   "app_name": "Final Driver",
   "login": "Log in",
+  "login_subtitle": "Please enter your mobile number to receive the verification code via text message",
   "phone": "Mobile Number",
   "type_phone": "Enter mobile number",
+  "verify_via": "Verify via",
+  "sms": "SMS",
+  "whatsapp": "WhatsApp",
   "verification_code": "Verification Code",
   "send": "Send",
   "home": "Home",

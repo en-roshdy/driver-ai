@@ -15,19 +15,19 @@ class AppColors {
   static const primary800 = Color(0xFF5B442A);
   static const primary900 = Color(0xFF3A2B1B);
 
-  // Neutral
+  // Neutral (Updated to match Figma)
   static const neutralWhite = Color(0xFFFFFFFF);
   static const neutral25 = Color(0xFFFCFCFD);
   static const neutral50 = Color(0xFFF9FAFB);
-  static const neutral100 = Color(0xFFF2F4F7);
+  static const neutral100 = Color(0xFFCDCACA); // Figma Neutral 100
   static const neutral200 = Color(0xFFEAECF0);
   static const neutral300 = Color(0xFFD0D5DD);
-  static const neutral400 = Color(0xFF98A2B3);
-  static const neutral500 = Color(0xFF667085);
+  static const neutral400 = Color(0xFF867979); // Figma Neutral 400
+  static const neutral500 = Color(0xFF6B6060); // Figma Neutral 500
   static const neutral600 = Color(0xFF475467);
-  static const neutral700 = Color(0xFF344054);
+  static const neutral700 = Color(0xFF353030); // Figma Neutral 700
   static const neutral800 = Color(0xFF1D2939);
-  static const neutral900 = Color(0xFF101828);
+  static const neutral900 = Color(0xFF100F0F); // Figma Neutral 900
 
   // Error
   static const error25 = Color(0xFFFFF5F5);
@@ -36,7 +36,7 @@ class AppColors {
   static const error200 = Color(0xFFFECDCA);
   static const error300 = Color(0xFFFDA29B);
   static const error400 = Color(0xFFF97066);
-  static const error500 = Color(0xFFD92D20);
+  static const error500 = Color(0xFFF04438); // Figma Error 500
   static const error600 = Color(0xFFB42318);
   static const error700 = Color(0xFF912018);
   static const error800 = Color(0xFF7A2714);
@@ -91,7 +91,7 @@ class AppColors {
   static const white = neutralWhite;
   static const greyText = neutral500;
   
-  // Legacy Aliases (to avoid breaking current code)
+  // Legacy Aliases
   static const red = error500;
   static const blue = info500;
   static const grey100 = neutral100;
@@ -134,26 +134,35 @@ class AppTheme {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.white,
-          minimumSize: const Size(double.infinity, 50),
+          minimumSize: const Size(double.infinity, 48), // Figma Height
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppRadius.r12),
+          ),
+          textStyle: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: AppColors.neutral50,
+        fillColor: AppColors.white,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppRadius.r12),
-          borderSide: BorderSide.none,
+          borderSide: const BorderSide(color: AppColors.neutral100),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppRadius.r12),
-          borderSide: BorderSide.none,
+          borderSide: const BorderSide(color: AppColors.neutral100),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppRadius.r12),
           borderSide: const BorderSide(color: AppColors.primary),
+        ),
+        hintStyle: const TextStyle(
+          color: AppColors.neutral700,
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
         ),
       ),
     );

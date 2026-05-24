@@ -15,10 +15,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get login => 'Log in';
 
   @override
+  String get login_subtitle =>
+      'Please enter your mobile number to receive the verification code via text message';
+
+  @override
   String get phone => 'Mobile Number';
 
   @override
   String get type_phone => 'Enter mobile number';
+
+  @override
+  String get verify_via => 'Verify via';
+
+  @override
+  String get sms => 'SMS';
+
+  @override
+  String get whatsapp => 'WhatsApp';
 
   @override
   String get verification_code => 'Verification Code';

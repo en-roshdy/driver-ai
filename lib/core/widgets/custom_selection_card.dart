@@ -9,6 +9,7 @@ class CustomSelectionCard extends StatelessWidget {
   final bool isSelected;
   final VoidCallback onTap;
   final double? height;
+  final double? width;
   final EdgeInsetsGeometry? padding;
 
   const CustomSelectionCard({
@@ -18,6 +19,7 @@ class CustomSelectionCard extends StatelessWidget {
     required this.onTap,
     this.trailing,
     this.height,
+    this.width,
     this.padding,
   });
 
@@ -27,9 +29,10 @@ class CustomSelectionCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: height ?? AppSize.s48,
-        padding: padding ?? const EdgeInsets.all(AppPadding.p12),
+        width: width,
+        padding: padding ?? const EdgeInsets.symmetric(horizontal: AppPadding.p12),
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.primary50 : const Color(0x0FFFFFFF),
+          color: isSelected ? AppColors.primary50 : AppColors.white,
           borderRadius: BorderRadius.circular(AppRadius.r12),
           border: Border.all(
             color: isSelected ? AppColors.primary500 : AppColors.neutral100,
@@ -68,13 +71,17 @@ class CustomSelectionCard extends StatelessWidget {
             Expanded(
               child: Text(
                 title,
+                textAlign: TextAlign.center,
                 style: isSelected
-                    ? AppTextStyles.bold16.copyWith(color: AppColors.primary)
-                    : AppTextStyles.regular16,
+                    ? AppTextStyles.medium12.copyWith(color: AppColors.primary)
+                    : AppTextStyles.medium12.copyWith(color: AppColors.neutral400),
               ),
             ),
             
-            if (trailing != null) trailing!,
+            if (trailing != null) ...[
+              const SizedBox(width: AppSize.s4),
+              trailing!,
+            ],
           ],
         ),
       ),

@@ -44,6 +44,8 @@ import 'package:final_delivery_ai/features/home/domain/repositories/home_reposit
     as _i950;
 import 'package:final_delivery_ai/features/home/presentation/bloc/home_bloc.dart'
     as _i993;
+import 'package:final_delivery_ai/features/language/presentation/bloc/language_bloc.dart'
+    as _i960;
 import 'package:final_delivery_ai/features/orders/data/datasources/order_remote_data_source.dart'
     as _i743;
 import 'package:final_delivery_ai/features/orders/data/repositories/order_repository_impl.dart'
@@ -99,6 +101,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i1066.OrderRepository>(
       () => _i1050.OrderRepositoryImpl(gh<_i743.OrderRemoteDataSource>()),
+    );
+    gh.factory<_i960.LanguageBloc>(
+      () => _i960.LanguageBloc(gh<_i902.LocalStorageService>()),
     );
     gh.lazySingleton<_i536.ChatRepository>(
       () => _i676.ChatRepositoryImpl(gh<_i442.ChatRemoteDataSource>()),

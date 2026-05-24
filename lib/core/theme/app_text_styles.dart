@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'app_theme.dart';
-import 'app_values.dart';
 
 class AppTextStyles {
+  static const TextStyle bold24 = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
+  );
+
   static const TextStyle bold22 = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
@@ -23,8 +27,28 @@ class AppTextStyles {
     fontWeight: FontWeight.bold,
   );
 
+  static const TextStyle bold14 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+  );
+
   static const TextStyle medium16 = TextStyle(
     fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle medium14 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle medium13 = TextStyle(
+    fontSize: 13,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle medium12 = TextStyle(
+    fontSize: 12,
     fontWeight: FontWeight.w500,
   );
 
@@ -41,6 +65,12 @@ class AppTextStyles {
   static const TextStyle greyRegular16 = TextStyle(
     fontSize: 16,
     color: AppColors.greyText,
+  );
+
+  static const TextStyle greyMedium14 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.neutral500,
   );
 
   static const TextStyle greyRegular13 = TextStyle(
