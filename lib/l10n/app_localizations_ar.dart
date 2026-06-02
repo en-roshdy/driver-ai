@@ -34,7 +34,14 @@ class AppLocalizationsAr extends AppLocalizations {
   String get whatsapp => 'واتس آب';
 
   @override
-  String get verification_code => 'رمز التفعيل';
+  String get verification_code => 'رمز التحقق';
+
+  @override
+  String get enter_verification_code =>
+      'قم بإدخال رمز التحقق الذي وصلك إلى الرقم';
+
+  @override
+  String get code_expires_in => 'تنتهي صلاحية كود التفعيل بعد';
 
   @override
   String get send => 'إرسال';
@@ -132,4 +139,44 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get confirm_delivery => 'تأكيد التوصيل';
+
+  @override
+  String get work_status => 'حالة العمل : ';
+
+  @override
+  String get orders_receiving_closed => 'اغلاق استلام الطلبات';
+
+  @override
+  String get orders_receiving_open => 'متاح';
+
+  @override
+  String get status_change_warning =>
+      'عذرًا، لا يمكن تغيير الحالة إلا بعد إتمام الرحلة.';
+
+  @override
+  String get top_statistics => 'أبرز الاحصائيات';
+
+  @override
+  String get ready_for_new_order => 'جاهز تستقبل طلب جديد ؟ 💪';
+
+  @override
+  String get view_all_orders => 'كل الطلبات';
+
+  @override
+  String get new_tag => 'جديد';
+
+  @override
+  String get order_type => 'نوع الطلب:';
+
+  @override
+  String get delivery => 'توصيل';
+
+  @override
+  String get return_order => 'إسترجاع';
+
+  @override
+  String get delivery_date => 'تاريخ التسليم';
+
+  @override
+  String get delivery_time => 'وقت التسليم';
 }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AppPadding {
+  static const double p2 = 2.0;
   static const double p4 = 4.0;
   static const double p6 = 6.0;
   static const double p8 = 8.0;
+  static const double p10 = 10.0;
   static const double p12 = 12.0;
   static const double p16 = 16.0;
   static const double p20 = 20.0;
@@ -42,6 +44,7 @@ class AppSize {
   static const double s40 = 40.0;
   static const double s48 = 48.0;
   static const double s50 = 50.0;
+  static const double s56 = 56.0;
   static const double s60 = 60.0;
   static const double s80 = 80.0;
   static const double s115 = 115.0;

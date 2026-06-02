@@ -91,7 +91,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i930.AuthRemoteDataSourceImpl(gh<_i361.Dio>()),
     );
     gh.lazySingleton<_i950.HomeRepository>(
-      () => _i605.HomeRepositoryImpl(gh<_i137.HomeRemoteDataSource>()),
+      () => _i605.HomeRepositoryImpl(gh<_i137.HomeRemoteDataSource>(),gh<_i902.LocalStorageService>()),
     );
     gh.lazySingleton<_i323.SocketService>(
       () => _i323.SocketService(gh<_i902.LocalStorageService>()),

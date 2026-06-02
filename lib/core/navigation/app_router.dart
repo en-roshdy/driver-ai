@@ -5,11 +5,13 @@ import '../../features/language/presentation/pages/language_page.dart';
 import '../../features/main/presentation/pages/main_page.dart';
 import '../../features/orders/presentation/pages/order_details_page.dart';
 import '../../features/chats/presentation/pages/chat_details_page.dart';
+import '../../features/authentication/presentation/pages/verification_page.dart';
 
 class AppRouter {
   static const splash = '/';
   static const language = '/language';
   static const login = '/login';
+  static const verification = '/verification';
   static const main = '/main';
   static const orderDetails = '/order-details/:id';
   static const chatDetails = '/chat-details/:id';
@@ -28,6 +30,13 @@ class AppRouter {
       GoRoute(
         path: login,
         builder: (context, state) => const LoginPage(),
+      ),
+      GoRoute(
+        path: verification,
+        builder: (context, state) {
+          final phone = state.extra as String;
+          return VerificationPage(phone: phone);
+        },
       ),
       GoRoute(
         path: main,

@@ -11,11 +11,11 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   ChatBloc(this.chatRepository) : super(ChatInitial()) {
     on<GetChats>((event, emit) async {
       emit(ChatLoading());
-      final result = await chatRepository.getChats(event.page);
-      result.fold(
-        (failure) => emit(ChatError(failure.message)),
-        (chats) => emit(ChatsLoaded(chats)),
-      );
+      // final result = await chatRepository.getChats(event.page);
+      // result.fold(
+      //   (failure) => emit(ChatError(failure.message)),
+      //   (chats) => emit(ChatsLoaded(chats)),
+      // );
     });
 
     on<GetChatMessages>((event, emit) async {

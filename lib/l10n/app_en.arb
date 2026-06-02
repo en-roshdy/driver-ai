@@ -8,6 +8,8 @@
   "sms": "SMS",
   "whatsapp": "WhatsApp",
   "verification_code": "Verification Code",
+  "enter_verification_code": "Enter the verification code sent to the number",
+  "code_expires_in": "Code expires in",
   "send": "Send",
   "home": "Home",
   "orders": "My Orders",
@@ -39,5 +41,18 @@
   "items": "Items",
   "quantity": "Quantity",
   "accept_order": "Accept Order",
-  "confirm_delivery": "Confirm Delivery"
+  "confirm_delivery": "Confirm Delivery",
+  "work_status": "Work Status: ",
+  "orders_receiving_closed": "Closed for receiving orders",
+  "orders_receiving_open": "Available",
+  "status_change_warning": "Sorry, status can only be changed after completing the trip.",
+  "top_statistics": "Highlights Statistics",
+  "ready_for_new_order": "Ready to receive a new order? 💪",
+  "view_all_orders": "All Orders",
+  "new_tag": "New",
+  "order_type": "Order Type:",
+  "delivery": "Delivery",
+  "return_order": "Return",
+  "delivery_date": "Delivery Date",
+  "delivery_time": "Delivery Time"
 }

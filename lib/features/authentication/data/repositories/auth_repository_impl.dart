@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/constants/enums.dart';
+import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/services/local_storage_service.dart';
 import '../../domain/entities/user.dart';
@@ -15,10 +17,12 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl(this.remoteDataSource, this.localStorageService);
 
   @override
-  Future<Either<Failure, User>> login(String phone) async {
+  Future<Either<Failure, User>> login(String phone, VerificationMethod method) async {
     try {
-      final userModel = await remoteDataSource.login(phone);
+      final userModel = await remoteDataSource.login(phone, method);
       return Right(userModel.toEntity());
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
     } catch (e) {
       return Left(ServerFailure(e.toString()));
     }
@@ -33,6 +37,8 @@ class AuthRepositoryImpl implements AuthRepository {
       }
       await localStorageService.saveUser(userModel);
       return Right(userModel.toEntity());
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
     } catch (e) {
       return Left(ServerFailure(e.toString()));
     }

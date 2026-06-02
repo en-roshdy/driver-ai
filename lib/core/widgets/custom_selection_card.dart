@@ -10,6 +10,8 @@ class CustomSelectionCard extends StatelessWidget {
   final VoidCallback onTap;
   final double? height;
   final double? width;
+  final double? fontSize;
+  final TextStyle? textStyle;
   final EdgeInsetsGeometry? padding;
 
   const CustomSelectionCard({
@@ -20,11 +22,17 @@ class CustomSelectionCard extends StatelessWidget {
     this.trailing,
     this.height,
     this.width,
+    this.fontSize,
+    this.textStyle,
     this.padding,
   });
 
   @override
   Widget build(BuildContext context) {
+    final defaultStyle = isSelected
+        ? AppTextStyles.medium12.copyWith(color: AppColors.primary)
+        : AppTextStyles.medium12.copyWith(color: AppColors.neutral300);
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -32,7 +40,7 @@ class CustomSelectionCard extends StatelessWidget {
         width: width,
         padding: padding ?? const EdgeInsets.symmetric(horizontal: AppPadding.p12),
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.primary50 : AppColors.white,
+          color: isSelected ? AppColors.primary50 : Colors.white.withOpacity(0.06),
           borderRadius: BorderRadius.circular(AppRadius.r12),
           border: Border.all(
             color: isSelected ? AppColors.primary500 : AppColors.neutral100,
@@ -48,7 +56,7 @@ class CustomSelectionCard extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: isSelected ? AppColors.primary : AppColors.neutral300,
+                  color: isSelected ? AppColors.primary : AppColors.neutral200,
                   width: AppSize.s2,
                 ),
               ),
@@ -71,15 +79,15 @@ class CustomSelectionCard extends StatelessWidget {
             Expanded(
               child: Text(
                 title,
-                textAlign: TextAlign.center,
-                style: isSelected
-                    ? AppTextStyles.medium12.copyWith(color: AppColors.primary)
-                    : AppTextStyles.medium12.copyWith(color: AppColors.neutral400),
+                textAlign: TextAlign.start,
+                style: (textStyle ?? defaultStyle).copyWith(
+                  fontSize: fontSize,
+                ),
               ),
             ),
             
             if (trailing != null) ...[
-              const SizedBox(width: AppSize.s4),
+              const SizedBox(width: AppSize.s8),
               trailing!,
             ],
           ],

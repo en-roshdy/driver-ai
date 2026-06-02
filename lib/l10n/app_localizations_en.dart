@@ -37,6 +37,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get verification_code => 'Verification Code';
 
   @override
+  String get enter_verification_code =>
+      'Enter the verification code sent to the number';
+
+  @override
+  String get code_expires_in => 'Code expires in';
+
+  @override
   String get send => 'Send';
 
   @override
@@ -132,4 +139,44 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get confirm_delivery => 'Confirm Delivery';
+
+  @override
+  String get work_status => 'Work Status: ';
+
+  @override
+  String get orders_receiving_closed => 'Closed for receiving orders';
+
+  @override
+  String get orders_receiving_open => 'Available';
+
+  @override
+  String get status_change_warning =>
+      'Sorry, status can only be changed after completing the trip.';
+
+  @override
+  String get top_statistics => 'Highlights Statistics';
+
+  @override
+  String get ready_for_new_order => 'Ready to receive a new order? 💪';
+
+  @override
+  String get view_all_orders => 'All Orders';
+
+  @override
+  String get new_tag => 'New';
+
+  @override
+  String get order_type => 'Order Type:';
+
+  @override
+  String get delivery => 'Delivery';
+
+  @override
+  String get return_order => 'Return';
+
+  @override
+  String get delivery_date => 'Delivery Date';
+
+  @override
+  String get delivery_time => 'Delivery Time';
 }

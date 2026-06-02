@@ -9,11 +9,12 @@ abstract class AuthEvent extends Equatable {
 
 class LoginRequested extends AuthEvent {
   final String phone;
+  final VerificationMethod method;
 
-  const LoginRequested(this.phone);
+  const LoginRequested(this.phone, this.method);
 
   @override
-  List<Object> get props => [phone];
+  List<Object> get props => [phone, method];
 }
 
 class OtpVerified extends AuthEvent {

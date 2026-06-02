@@ -152,6 +152,18 @@ abstract class AppLocalizations {
   /// **'Verification Code'**
   String get verification_code;
 
+  /// No description provided for @enter_verification_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the verification code sent to the number'**
+  String get enter_verification_code;
+
+  /// No description provided for @code_expires_in.
+  ///
+  /// In en, this message translates to:
+  /// **'Code expires in'**
+  String get code_expires_in;
+
   /// No description provided for @send.
   ///
   /// In en, this message translates to:
@@ -343,6 +355,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Confirm Delivery'**
   String get confirm_delivery;
+
+  /// No description provided for @work_status.
+  ///
+  /// In en, this message translates to:
+  /// **'Work Status: '**
+  String get work_status;
+
+  /// No description provided for @orders_receiving_closed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed for receiving orders'**
+  String get orders_receiving_closed;
+
+  /// No description provided for @orders_receiving_open.
+  ///
+  /// In en, this message translates to:
+  /// **'Available'**
+  String get orders_receiving_open;
+
+  /// No description provided for @status_change_warning.
+  ///
+  /// In en, this message translates to:
+  /// **'Sorry, status can only be changed after completing the trip.'**
+  String get status_change_warning;
+
+  /// No description provided for @top_statistics.
+  ///
+  /// In en, this message translates to:
+  /// **'Highlights Statistics'**
+  String get top_statistics;
+
+  /// No description provided for @ready_for_new_order.
+  ///
+  /// In en, this message translates to:
+  /// **'Ready to receive a new order? 💪'**
+  String get ready_for_new_order;
+
+  /// No description provided for @view_all_orders.
+  ///
+  /// In en, this message translates to:
+  /// **'All Orders'**
+  String get view_all_orders;
+
+  /// No description provided for @new_tag.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get new_tag;
+
+  /// No description provided for @order_type.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Type:'**
+  String get order_type;
+
+  /// No description provided for @delivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery'**
+  String get delivery;
+
+  /// No description provided for @return_order.
+  ///
+  /// In en, this message translates to:
+  /// **'Return'**
+  String get return_order;
+
+  /// No description provided for @delivery_date.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Date'**
+  String get delivery_date;
+
+  /// No description provided for @delivery_time.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Time'**
+  String get delivery_time;
 }
 
 class _AppLocalizationsDelegate

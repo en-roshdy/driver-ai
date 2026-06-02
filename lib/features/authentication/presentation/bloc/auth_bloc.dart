@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
+import '../../../../core/constants/enums.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/auth_repository.dart';
 
@@ -14,7 +15,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this.authRepository) : super(AuthInitial()) {
     on<LoginRequested>((event, emit) async {
       emit(AuthLoading());
-      final result = await authRepository.login(event.phone);
+      final result = await authRepository.login(event.phone, event.method);
       result.fold(
         (failure) => emit(AuthError(failure.message)),
         (user) => emit(OtpSent(event.phone)),

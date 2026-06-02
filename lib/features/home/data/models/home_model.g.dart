@@ -27,7 +27,7 @@ _$StatisticModelImpl _$$StatisticModelImplFromJson(Map<String, dynamic> json) =>
       image: json['image'] as String,
       name: json['name'] as String,
       value: (json['number'] as num).toDouble(),
-      isDouble: json['is_double'] as bool,
+      isDouble: json['is_double'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$StatisticModelImplToJson(

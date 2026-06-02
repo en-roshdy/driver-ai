@@ -32,6 +32,7 @@ class OrderModel with _$OrderModel {
         statusCustomName: status?.customName,
         statusColor: status?.color,
         date: toDate?.date,
+        time: toDate?.time?.value,
         mapAddress: mapAddress,
         lat: double.tryParse(lat ?? ''),
         lng: double.tryParse(lng ?? ''),

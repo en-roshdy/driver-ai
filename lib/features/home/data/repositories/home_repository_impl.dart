@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
+import 'package:final_delivery_ai/features/authentication/data/models/user_model.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../core/error/failures.dart';
+import '../../../../core/services/local_storage_service.dart';
 import '../../domain/entities/home_data.dart';
 import '../../domain/repositories/home_repository.dart';
 import '../datasources/home_remote_data_source.dart';
@@ -8,8 +10,9 @@ import '../datasources/home_remote_data_source.dart';
 @LazySingleton(as: HomeRepository)
 class HomeRepositoryImpl implements HomeRepository {
   final HomeRemoteDataSource remoteDataSource;
+  final LocalStorageService localStorageService;
 
-  HomeRepositoryImpl(this.remoteDataSource);
+  HomeRepositoryImpl(this.remoteDataSource,this.localStorageService);
 
   @override
   Future<Either<Failure, HomeData>> getHome() async {
@@ -29,5 +32,10 @@ class HomeRepositoryImpl implements HomeRepository {
     } catch (e) {
       return Left(ServerFailure(e.toString()));
     }
+  }
+
+  @override
+  UserModel? getUserModel() {
+    return localStorageService.getUser() ;
   }
 }

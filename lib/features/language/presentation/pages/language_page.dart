@@ -28,82 +28,137 @@ class _LanguagePageState extends State<LanguagePage> {
 
     return Scaffold(
       backgroundColor: AppColors.white,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppPadding.p24),
-          child: Column(
-            children: [
-              const SizedBox(height: AppSize.s40),
-              SvgPicture.asset(
-                AppAssets.languageImg,
-                height: AppSize.s231,
-                width: AppSize.s231,
-                errorBuilder: (context, error, stackTrace) => const Icon(
-                  Icons.language,
-                  size: AppSize.s100,
-                  color: AppColors.primary,
+      body: Stack(
+        children: [
+          // Decorative Background Circle
+          Positioned(
+            left: 111,
+            top: 169,
+            child: Container(
+              width: 152,
+              height: 152,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.white.withOpacity(0.30),
+                    const Color(0x3377736F),
+                    const Color(0x4CF9F9F9),
+                  ],
                 ),
               ),
-              const Spacer(),
-              
-              // Title
-              Text(
-                l10n.select_language,
-                style: AppTextStyles.bold20,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: AppSize.s12),
-              
-              // Subtitle
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: AppPadding.p12),
-                child: Text(
-                  l10n.please_select_language,
-                  style: AppTextStyles.greyRegular16,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              const SizedBox(height: AppSize.s32),
-              
-              // Language Options
-              CustomSelectionCard(
-                title: l10n.english,
-                trailing: SvgPicture.asset(
-                  AppAssets.flagEn,
-                  width: AppSize.s24,
-                  height: AppSize.s24,
-                ),
-                isSelected: _selectedLanguage == 'en',
-                onTap: () => setState(() => _selectedLanguage = 'en'),
-              ),
-              const SizedBox(height: AppSize.s16),
-              CustomSelectionCard(
-                title: l10n.arabic,
-                trailing: SvgPicture.asset(
-                  AppAssets.flagAr,
-                  width: AppSize.s24,
-                  height: AppSize.s24,
-                ),
-                isSelected: _selectedLanguage == 'ar',
-                onTap: () => setState(() => _selectedLanguage = 'ar'),
-              ),
-
-              const Spacer(),
-              
-              // Selection Button
-              CustomButton(
-                text: l10n.choose_language,
-                onPressed: () {
-                  context.read<LanguageBloc>().add(
-                        ChangeLanguage(Locale(_selectedLanguage)),
-                      );
-                  context.go(AppRouter.login);
-                },
-              ),
-              const SizedBox(height: AppSize.s40),
-            ],
+            ),
           ),
-        ),
+          
+          SafeArea(
+            child: Center(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: AppPadding.p16),
+                child: SizedBox(
+                  width: AppSize.s343,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(height: AppPadding.p40),
+                      
+                      // Illustration
+                      SvgPicture.asset(
+                        AppAssets.languageImg,
+                        height: AppSize.s231,
+                        width: AppSize.s231,
+                        errorBuilder: (context, error, stackTrace) => const Icon(
+                          Icons.language,
+                          size: AppSize.s100,
+                          color: AppColors.primary,
+                        ),
+                      ),
+                      const SizedBox(height: AppSize.s32),
+                      
+                      // Title & Subtitle
+                      Column(
+                        children: [
+                          Text(
+                            l10n.select_language,
+                            style: AppTextStyles.bold20.copyWith(
+                              color: AppColors.neutral700,
+                              height: 1.40,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: AppSize.s10),
+                          SizedBox(
+                            width: 273,
+                            child: Text(
+                              l10n.please_select_language,
+                              style: AppTextStyles.medium14.copyWith(
+                                color: AppColors.neutral700,
+                                height: 1.43,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: AppSize.s32),
+                      
+                      // Language Options
+                      Column(
+                        children: [
+                          CustomSelectionCard(
+                            title: l10n.english,
+                            trailing: SvgPicture.asset(
+                              AppAssets.flagEn,
+                              width: AppSize.s24,
+                              height: AppSize.s24,
+                            ),
+                            isSelected: _selectedLanguage == 'en',
+                            onTap: () => setState(() => _selectedLanguage = 'en'),
+                            textStyle: AppTextStyles.bold14.copyWith(
+                              color: _selectedLanguage == 'en' 
+                                  ? AppColors.neutral700 
+                                  : AppColors.neutral500,
+                            ),
+                          ),
+                          const SizedBox(height: AppSize.s16),
+                          CustomSelectionCard(
+                            title: l10n.arabic,
+                            trailing: SvgPicture.asset(
+                              AppAssets.flagAr,
+                              width: AppSize.s24,
+                              height: AppSize.s24,
+                            ),
+                            isSelected: _selectedLanguage == 'ar',
+                            onTap: () => setState(() => _selectedLanguage = 'ar'),
+                            textStyle: AppTextStyles.bold14.copyWith(
+                              color: _selectedLanguage == 'ar' 
+                                  ? AppColors.neutral700 
+                                  : AppColors.neutral500,
+                            ),
+                          ),
+                          const SizedBox(height: AppSize.s32),
+                          
+                          // Selection Button
+                          CustomButton(
+                            text: l10n.choose_language,
+                            onPressed: () {
+                              context.read<LanguageBloc>().add(
+                                    ChangeLanguage(Locale(_selectedLanguage)),
+                                  );
+                              context.go(AppRouter.login);
+                            },
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: AppPadding.p40),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

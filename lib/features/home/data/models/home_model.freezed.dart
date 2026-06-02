@@ -365,7 +365,7 @@ class _$StatisticModelImpl extends _StatisticModel {
     required this.image,
     required this.name,
     @JsonKey(name: 'number') required this.value,
-    @JsonKey(name: 'is_double') required this.isDouble,
+    @JsonKey(name: 'is_double') this.isDouble = false,
   }) : super._();
 
   factory _$StatisticModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -425,7 +425,7 @@ abstract class _StatisticModel extends StatisticModel {
     required final String image,
     required final String name,
     @JsonKey(name: 'number') required final double value,
-    @JsonKey(name: 'is_double') required final bool isDouble,
+    @JsonKey(name: 'is_double') final bool isDouble,
   }) = _$StatisticModelImpl;
   const _StatisticModel._() : super._();
 

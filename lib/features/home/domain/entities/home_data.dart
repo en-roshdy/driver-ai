@@ -19,7 +19,7 @@ class Statistic extends Equatable {
   final String image;
   final String name;
   final double value;
-  final bool isDouble;
+  final bool? isDouble;
 
   const Statistic({
     required this.image,

@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import '../models/home_model.dart';
 import '../../../../core/network/base_response.dart';
+import '../../../../core/error/exceptions.dart';
+import '../../../../core/network/error_handler.dart';
 
 abstract class HomeRemoteDataSource {
   Future<HomeModel> getHome();
@@ -16,16 +18,34 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
 
   @override
   Future<HomeModel> getHome() async {
-    final response = await dio.get('delegate/home');
-    if (response.statusCode == 200) {
-      return HomeModel.fromJson(response.data['data']);
-    } else {
-      throw Exception('Server Error');
+    try {
+      final response = await dio.get('delegate/home');
+      
+      final baseResponse = BaseResponse<HomeModel>.fromJson(
+        response.data,
+        (json) => HomeModel.fromJson(json as Map<String, dynamic>),
+      );
+
+      if (baseResponse.status == true && baseResponse.data != null) {
+        return baseResponse.data!;
+      } else {
+        throw ServerException(baseResponse.message ?? 'Server Error');
+      }
+    } on DioException catch (e) {
+      throw ErrorHandler.handleDioError(e);
+    } catch (e) {
+      throw ServerException(e.toString());
     }
   }
 
   @override
   Future<void> changeAvailability(int status) async {
-    await dio.post('delegate/change-availability', data: {'status': status});
+    try {
+      await dio.post('delegate/change-availability', data: {'status': status});
+    } on DioException catch (e) {
+      throw ErrorHandler.handleDioError(e);
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
   }
 }

@@ -28,7 +28,7 @@ class StatisticModel with _$StatisticModel {
     required String image,
     required String name,
     @JsonKey(name: 'number') required double value,
-    @JsonKey(name: 'is_double') required bool isDouble,
+    @Default(false) @JsonKey(name: 'is_double') bool isDouble,
   }) = _StatisticModel;
 
   factory StatisticModel.fromJson(Map<String, dynamic> json) => _$StatisticModelFromJson(json);

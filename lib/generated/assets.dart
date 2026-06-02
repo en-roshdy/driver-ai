@@ -38,6 +38,9 @@ class $AssetsImagesGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  final SvgGenImage icArrowBackAr = const SvgGenImage(
+    'assets/icons/ic_arrow_back_ar.svg',
+  );
   final AssetGenImage launcherIcon = const AssetGenImage(
     'assets/icons/launcher_icon.png',
   );

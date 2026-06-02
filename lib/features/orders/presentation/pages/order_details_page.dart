@@ -83,17 +83,17 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                       trailing: Text('${item.price}'),
                     )),
                 const SizedBox(height: AppSize.s20),
-                if (order.canAccept)
+                if ((order.canAccept ?? false))
                   ElevatedButton(
                     onPressed: () {
-                      context.read<OrderBloc>().add(AcceptOrderEvent(order.id));
+                      context.read<OrderBloc>().add(AcceptOrderEvent(order.id ?? 0));
                     },
                     child: Text(l10n.accept_order),
                   ),
-                if (order.canConfirm)
+                if ((order.canConfirm ?? false))
                   ElevatedButton(
                     onPressed: () {
-                      context.read<OrderBloc>().add(ConfirmOrderEvent(order.id));
+                      context.read<OrderBloc>().add(ConfirmOrderEvent(order.id ?? 0));
                     },
                     child: Text(l10n.confirm_delivery),
                   ),
